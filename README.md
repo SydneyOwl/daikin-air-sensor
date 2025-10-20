@@ -1,4 +1,15 @@
 ## 大金空气传感器
+
+在原版固件上加入了自动上报数据到http端点支持
+
+YOURURL?co2=xxx&pm25=xxx&tvoc=xxx&temp=xxx&humi=xxx
+
+需使用ESPHOME > 2023.11
+
+![](./image/img.png)
+
+---以下为原文
+
 下图为BRY88AB151K版，其右上为甲醛扩展侧盖，向后滑动打开；不带甲醛字样的为BRY88AA151K版，不支持甲醛扩展
 
 <img src="https://raw.githubusercontent.com/louliangsheng/daikin-air-sensor/main/image/BRY88AB151K.jpg" width="300">
