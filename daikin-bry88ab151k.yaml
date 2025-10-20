@@ -6,8 +6,8 @@ esphome:
     # version: "PM2005"
   name_add_mac_suffix: true
   includes:
-    - "cm1106.h"
-    - "pm2105.h"  #根据PM2.5传感器型号选择
+    - "header/cm1106.h"
+    - "header/pm2105.h"  #根据PM2.5传感器型号选择
     # - "pm2005.h"
 
 esp32:
@@ -25,6 +25,10 @@ api:
   reboot_timeout: 0s
 
 ota:
+
+http_request:
+  timeout: 5s
+
 
 web_server:
   port: 80
@@ -56,6 +60,19 @@ i2c:
   sda: 19
   scl: 21
   scan: true
+
+interval:
+  - id: http_report_timer
+    interval: 60s
+    then:
+      - http_request.get:
+          url: !lambda |-
+            return std::string(id(httpreportendpoint).state) + 
+                   "?co2=" + to_string((int)id(co2sensor).state) +
+                   "&pm25=" + to_string(id(pm25sensor).state) +
+                   "&tvoc=" + to_string((int)id(tvocsensor).state) +
+                   "&temp=" + to_string(id(temperature).state) +
+                   "&humi=" + to_string(id(humidity).state);
 
 sensor:
 - platform: custom
@@ -149,6 +166,15 @@ switch:
 
 status_led:
   pin: 25
+
+text:
+- platform: template
+  name: "HTTP Report endpoint"
+  entity_category: "config"
+  mode: text
+  id: httpreportendpoint
+  restore_value: true
+  optimistic: true
 
 number:
 - platform: template
