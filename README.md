@@ -1,6 +1,6 @@
 ## 大金空气传感器
 
-在原版固件上加入了自动上报数据到http端点支持
+在原版固件上加入了自动上报数据到http端点支持，同时加入了pm1和pm10的传感器数据读取支持
 
 YOURURL?co2=xxx&pm25=xxx&tvoc=xxx&temp=xxx&humi=xxx
 
