@@ -70,7 +70,7 @@ interval:
           url: !lambda |-
             return std::string(id(httpreportendpoint).state) + 
                    "?co2=" + to_string((int)id(co2sensor).state) +
-                   "&eco2=" + to_string((int)id(co2sensor).state) +
+                   "&eco2=" + to_string((int)id(eco2sensor).state) +
                    "&pm1=" + to_string(id(pm1sensor).state) +
                    "&pm25=" + to_string(id(pm25sensor).state) +
                    "&pm10=" + to_string(id(pm10sensor).state) +
@@ -112,12 +112,12 @@ sensor:
     temperature_source: temperature
     humidity_source: humidity
   eco2:
+    name: "DAIKIN eCO2 Sensor"
     id: eco2sensor
-    internal: true
+    unit_of_measurement: "ppm"
   tvoc:
     name: "DAIKIN TVOC Sensor"
     id: tvocsensor
-    device_class: volatile_organic_compounds
     unit_of_measurement: "µg/m³"
     filters:
       - throttle: 15s
@@ -345,3 +345,6 @@ button:
   on_press:
     then:
       - cm1106.calibrate_zero: cm1106sen
+- platform: factory_reset
+  name: Restart with Factory Default Settings
+  entity_category: "diagnostic"
