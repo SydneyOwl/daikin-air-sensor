@@ -70,6 +70,7 @@ interval:
           url: !lambda |-
             return std::string(id(httpreportendpoint).state) + 
                    "?co2=" + to_string((int)id(co2sensor).state) +
+                   "&eco2=" + to_string((int)id(co2sensor).state) +
                    "&pm1=" + to_string(id(pm1sensor).state) +
                    "&pm25=" + to_string(id(pm25sensor).state) +
                    "&pm10=" + to_string(id(pm10sensor).state) +
@@ -80,7 +81,7 @@ interval:
 sensor:
 - platform: cm1106
   id: cm1106sen
-  update_interval: 20s
+  update_interval: 30s
   co2:
     name: "DAIKIN CO2 Sensor"
     id: co2sensor
@@ -89,7 +90,7 @@ sensor:
 - platform: pm2005
   type: pm2105
   i2c_id: pm25_bus
-  update_interval: 15s
+  update_interval: 50s
   pm_1_0:
     id: pm1sensor
     unit_of_measurement: "µg/m³"
@@ -105,6 +106,8 @@ sensor:
 
 - platform: sgp30
   i2c_id: th_bus
+  store_baseline: true
+  update_interval: 40s
   compensation:
     temperature_source: temperature
     humidity_source: humidity
@@ -140,9 +143,6 @@ sensor:
       - lambda: return x * id(humiditymultiply).state;
       - clamp:
           max_value: 100
-          
-- platform: wifi_signal
-  name: "DAIKIN Signal"
 
 switch:
 - platform: template
