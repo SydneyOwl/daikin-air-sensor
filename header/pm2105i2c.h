@@ -189,8 +189,8 @@ public:
     // this->AQILevel = getAQILevel(this->vref_default_);
     // this->AQILevel_CN = level2cn(AQILevel);
     // #ifdef PM2105i_DEBUG
-    // ESP_LOGD(TAGpm2105i, "status:%u measuring_mode:%u calibration_coefficient:%u", this->status, this->measuring_mode, this->calibration_coefficient);
-    // ESP_LOGD(TAGpm2105i, "PM1.0:%u PM2.5:%u PM10:%u, AQI=%u  MainPolluted=%s AQILevel=%u", this->pm1p0_grimm, this->pm2p5_grimm, this->pm10_grimm, this->AQI, this->MainPolluted, this->AQILevel);
+    ESP_LOGD(TAGpm2105i, "status:%u measuring_mode:%u calibration_coefficient:%u", this->status, this->measuring_mode, this->calibration_coefficient);
+    ESP_LOGD(TAGpm2105i, "PM1.0:%u PM2.5:%u PM10:%u", this->pm1p0_grimm, this->pm2p5_grimm, this->pm10_grimm);
     // #endif
     return 0;
   }
