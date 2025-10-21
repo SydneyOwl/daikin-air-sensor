@@ -1,14 +1,14 @@
-## 大金空气传感器
+## 大金空气传感器(BRY88AB151K)
 
-在原版固件上加入了自动上报数据到http端点支持，同时加入了pm1和pm10的传感器数据读取支持
+在原版固件上加入了自动上报数据到http端点支持，同时加入了pm1和pm10的传感器数据读取支持；移除cm1106和pm2105的头文件，直接使用esphome的内置支持
 
-YOURURL?co2=xxx&pm25=xxx&tvoc=xxx&temp=xxx&humi=xxx
+YOURURL?co2=xxx&pm1=xxx&pm25=xxx&pm10=xxx&tvoc=xxx&temp=xxx&humi=xxx
 
-需使用ESPHOME > 2023.11
+需使用ESPHOME > 2025编译
 
 ![](./image/img.png)
 
----以下为原文
+---**以下为原文**
 
 下图为BRY88AB151K版，其右上为甲醛扩展侧盖，向后滑动打开；不带甲醛字样的为BRY88AA151K版，不支持甲醛扩展
 
@@ -32,6 +32,3 @@ YOURURL?co2=xxx&pm25=xxx&tvoc=xxx&temp=xxx&humi=xxx
 - 感谢[严泽远](https://github.com/nixieclock)大佬的PM2.5传感器[PM2105](http://www.gassensor.com.cn/ParticulateSensor/info_itemid_104.html) Header文件以及各种证件照
 - 感谢MiWyf大佬的甲醛传感器[ZE08-CH20](http://style.winsensor.com/pro_pdf/ZE08-CH2O.pdf) [Header文件](https://github.com/miwyf/ze08-ch2o-esphome)
 - [CM1106二氧化碳传感器](http://www.gassensor.com.cn/CO2Sensor/info_itemid_94.html) [Header文件](https://github.com/LeoDJ/ESPHome_Nodes)
-
-## 购买链接
-不想刷机的老板可以咸鱼搜索用户[是阿辉没错](https://m.tb.cn/h.TiM3dln?tk=4So1eYddumv)，直接购买俺刷好的成品，包含甲醛模块，同时也有兼容原大金APP的甲醛模块单独出售。
