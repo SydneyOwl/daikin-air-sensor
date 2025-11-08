@@ -2,13 +2,8 @@ esphome:
   name: daikin-air-sensor
   project:
     name: "DAIKIN.BRY88AB151K"
-    version: "PM2105" #根据PM2.5传感器型号选择，方便后续OTA查找文件
-    # version: "PM2005"
+    version: "PM2105"
   name_add_mac_suffix: true
-  # includes:
-    # - "header/cm1106.h"
-    # - "header/pm2105i2c.h"  #根据PM2.5传感器型号选择
-    # - "pm2005.h"
 
 esp32:
   board: nodemcu-32s
@@ -40,11 +35,6 @@ logger:
     sgp30: WARN
     sensor: WARN
     component: ERROR
-
-# bluetooth_proxy:  #需要蓝牙代理功能可以打开
-#   active: true
-
-# esp32_ble_tracker:
 
 uart:
 - id: cm1106_uart
@@ -81,7 +71,7 @@ interval:
 sensor:
 - platform: cm1106
   id: cm1106sen
-  update_interval: 30s
+  update_interval: 150s
   co2:
     name: "DAIKIN CO2 Sensor"
     id: co2sensor
@@ -90,7 +80,7 @@ sensor:
 - platform: pm2005
   type: pm2105
   i2c_id: pm25_bus
-  update_interval: 50s
+  update_interval: 120s
   pm_1_0:
     id: pm1sensor
     unit_of_measurement: "µg/m³"
@@ -107,7 +97,7 @@ sensor:
 - platform: sgp30
   i2c_id: th_bus
   store_baseline: true
-  update_interval: 40s
+  update_interval: 90s
   compensation:
     temperature_source: temperature
     humidity_source: humidity
@@ -130,7 +120,7 @@ sensor:
 
 - platform: hdc1080
   i2c_id: th_bus
-  update_interval: 15s
+  update_interval: 60s
   temperature:
     name: "DAIKIN Temperature Sensor"
     id: temperature
