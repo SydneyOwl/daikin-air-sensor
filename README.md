@@ -4,7 +4,8 @@
 
 YOURURL?co2=xxx&pm1=xxx&pm25=xxx&pm10=xxx&tvoc=xxx&temp=xxx&humi=xxx
 
-需使用ESPHOME > 2025编译
+需使用ESPHOME > 2025.10.3编译
+（CM1106在2025.10.3中引入支持）
 
 ![](./image/img.png)
 

@@ -314,13 +314,13 @@ binary_sensor:
   internal: true
   id: co2_calibration
   lambda: |-
-    if (id(co2sensor).state == 400) {
+    if (id(co2sensor).state < 400) {
       return true;
     } else {
       return false;
     }
   filters:
-    - delayed_on: 5min #CO2持续400ppm并保持5分钟会自动校准
+    - delayed_on: 15min
   on_press:
     then:
       - cm1106.calibrate_zero: cm1106sen
